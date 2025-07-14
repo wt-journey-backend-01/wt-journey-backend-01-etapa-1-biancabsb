@@ -15,23 +15,22 @@ app.get('/contato', (req, res) => {
 });
 
 app.post('/contato', (req, res) => {
-   ultimocontato = req.body;
-  
-  res.redirect('/contato-recebido');
-    
+  ultimocontato = req.body;
+  res.status(200).redirect('/contato-recebido');   
 });
 
 app.get('/contato-recebido', (req, res)=>{
       if(!ultimocontato){
       res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
   }
-  const {nameC, email, assunto, mensagem} = ultimocontato;
+  const {nome, email, assunto, mensagem} = ultimocontato;
     res.status(200).send (`
         <h1>Contato recebido, obrigado!</h1>
-        <p>Nome:<strong>${nameC}</strong></p>
+        <p>Nome:<strong>${nome}</strong></p>
         <p>Email:<strong>${email}</strong></p>
         <p>Assunto:<strong>${assunto}</strong></p>
         <p>Mensagem:<strong>${mensagem}</strong></p>
+        <a href="/">Voltar para o início</a>
         `);
 });
 
@@ -40,17 +39,19 @@ let ultimasugestao = null;
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
+
 app.get('/sugestao', (req, res)=>{
-    const name = req.query.name;
+    const nome = req.query.nome;
     const ingredientes = req.query.ingredientes;
 
-    if(!name && !ingredientes){
+    if(!nome && !ingredientes){
          res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
     }
     res.status(200).send(`
         <h1>Sugestão recebida, obrigado!</h1>
-        <p>Nome:<strong>${name}</strong></p>
+        <p>Nome:<strong>${nome}</strong></p>
         <p>ingredientes:<strong>${ingredientes}</strong></p>
+        <a href="/">Voltar para o início</a>
         `);
 })
 
