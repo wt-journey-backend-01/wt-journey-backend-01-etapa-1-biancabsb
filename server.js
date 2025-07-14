@@ -22,8 +22,8 @@ app.post('/contato', (req, res) => {
 app.get('/contato-recebido', (req, res)=>{
       if(!ultimocontato){
       res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
-  }
-  const {nome, email, assunto, mensagem} = ultimocontato;
+       }
+    const {nome, email, assunto, mensagem} = ultimocontato;
     res.status(200).send (`
         <h1>Contato recebido, obrigado!</h1>
         <p>Nome:<strong>${nome}</strong></p>
@@ -46,7 +46,8 @@ app.get('/sugestao', (req, res)=>{
 
     if(!nome && !ingredientes){
          res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
-    }
+    } 
+
     res.status(200).send(`
         <h1>Sugestão recebida, obrigado!</h1>
         <p>Nome:<strong>${nome}</strong></p>
