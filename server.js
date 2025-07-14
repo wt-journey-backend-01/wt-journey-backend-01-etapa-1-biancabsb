@@ -16,10 +16,16 @@ app.get('/contato', (req, res) => {
 
 app.post('/contato', (req, res) => {
    ultimocontato = req.body;
-    if(!ultimocontato){
+  
+  res.redirect('/contato-recebido');
+    
+});
+
+app.get('/contato-recebido', (req, res)=>{
+      if(!ultimocontato){
       res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
   }
-    const {nameC, email, assunto, mensagem} = ultimocontato;
+  const {nameC, email, assunto, mensagem} = ultimocontato;
     res.status(200).send (`
         <h1>Contato recebido, obrigado!</h1>
         <p>Nome:<strong>${nameC}</strong></p>
@@ -27,7 +33,6 @@ app.post('/contato', (req, res) => {
         <p>Assunto:<strong>${assunto}</strong></p>
         <p>Mensagem:<strong>${mensagem}</strong></p>
         `);
-  
 });
 
 let ultimasugestao = null; 
