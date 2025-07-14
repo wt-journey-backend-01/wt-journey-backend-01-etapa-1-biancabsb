@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+   <title>Formulário de Sugestão</title>
+   <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <form action = "/sugestao" method="get">
+        <h2>Sugestão de Lanche</h2>
+        <div>
+            <label for = "nome">Informe o nome do lanche:</label>
+            <input type="text" name="name" id= "name" required>
+        </div>
+         <div>
+            <label for = "ingredientes">Informe os ingredientes:</label>
+            <input type="text" name="ingredientes" id= "ingredientes" required>
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+    <a href="/contato">Entrar em Contato</a>
+    <a href="/api/lanches">Exibir Lanches</a>
+
+</body>
+</html>
